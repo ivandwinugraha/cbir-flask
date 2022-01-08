@@ -19,7 +19,7 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 
 # Model saved with Keras model.save()
-MODEL_PATH = 'models/trained_model.h5'
+MODEL_PATH = 'models/model1.h5'
 
 #Load your trained model
 model = load_model(MODEL_PATH)
@@ -71,7 +71,7 @@ def upload():
 		# In this model 1 is Pneumonia and 0 is Normal.
         str1 = 'Pneumonia'
         str2 = 'Normal'
-        if preds == 1:
+        if preds [0]> 0.5:
             return str1
         else:
             return str2
