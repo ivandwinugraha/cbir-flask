@@ -20,7 +20,7 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 
 # Model saved with Keras model.save()
-MODEL_PATH = 'models/trained_model.h5'
+MODEL_PATH = 'models/model.h5'
 
 #Load your trained model
 model = load_model(MODEL_PATH)
@@ -35,7 +35,7 @@ print('Model loaded. Start serving...')
 
 
 def model_predict(img_path, model):
-    img = image.load_img(img_path, target_size=(64, 64)) #target_size must agree with what the trained model expects!!
+    img = image.load_img(img_path, target_size=(300,300)) #target_size must agree with what the trained model expects!!
 
     # Preprocessing the image
     img = image.img_to_array(img)
@@ -72,7 +72,7 @@ def upload():
 		# In this model 1 is Pneumonia and 0 is Normal.
         str1 = 'Pneumonia'
         str2 = 'Normal'
-        if preds[0]> 0.5:
+        if preds == 1:
             return str1
         else:
             return str2
