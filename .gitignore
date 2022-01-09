@@ -1,1 +1,3 @@
 venv/*
+uploads/*.jpg
+uploads/*.png
